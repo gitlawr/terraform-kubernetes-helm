@@ -3,11 +3,13 @@ terraform {
     helm = {
       source = "hashicorp/helm"
       version = "2.8.0"
+
+      kubernetes {
+        config_path = "~/.kube/config"
+      }
     }
   }
 }
-
-provider "helm" {}
 
 resource "helm_release" "example" {
   name       = "my-helm-release"
